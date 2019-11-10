@@ -1,10 +1,10 @@
-package com.qstm.tabdesign.adapter;
+package com.iot.myfridge.adapter;
 
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.qstm.tabdesign.R;
+import com.iot.myfridge.R;
 
 import java.util.List;
 

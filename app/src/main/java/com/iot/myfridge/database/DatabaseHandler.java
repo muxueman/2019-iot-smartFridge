@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.database;
+package com.iot.myfridge.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

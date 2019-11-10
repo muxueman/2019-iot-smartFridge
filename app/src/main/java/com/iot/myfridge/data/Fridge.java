@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.data;
+package com.iot.myfridge.data;
 
 public class Fridge {
     public Fridge(){};

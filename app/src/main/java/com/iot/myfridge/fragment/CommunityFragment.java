@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.fragment;
+package com.iot.myfridge.fragment;
 
 
 
@@ -7,20 +7,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.qstm.tabdesign.R;
+import com.iot.myfridge.R;
 
 
 /**
- * 我的
+ * 社区
  */
-public class UserFragment extends Fragment  {
+public class CommunityFragment extends Fragment  {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_add, container, false);
 
 
         return view;

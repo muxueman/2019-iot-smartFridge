@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.utils;
+package com.iot.myfridge.utils;
 
 import android.annotation.SuppressLint;
 import android.os.Build;

@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.fragment;
+package com.iot.myfridge.fragment;
 
 
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.qstm.tabdesign.R;
-import com.qstm.tabdesign.adapter.RecycleViewGridAdapter;
-import com.qstm.tabdesign.adapter.TabFragmentAdapter;
+import com.iot.myfridge.R;
+import com.iot.myfridge.adapter.RecycleViewGridAdapter;
+import com.iot.myfridge.adapter.TabFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

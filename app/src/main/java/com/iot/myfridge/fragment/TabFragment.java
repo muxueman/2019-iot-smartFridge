@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.fragment;
+package com.iot.myfridge.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.qstm.tabdesign.R;
-import com.qstm.tabdesign.adapter.RecycleViewAdapter;
-import com.qstm.tabdesign.utils.GlideImageLoader;
+import com.iot.myfridge.R;
+import com.iot.myfridge.adapter.RecycleViewAdapter;
+import com.iot.myfridge.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 

@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.data;
+package com.iot.myfridge.data;
 
 import java.util.Calendar;
 import java.util.Date;

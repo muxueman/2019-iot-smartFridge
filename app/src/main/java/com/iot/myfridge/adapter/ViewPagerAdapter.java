@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.adapter;
+package com.iot.myfridge.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

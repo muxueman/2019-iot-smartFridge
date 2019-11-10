@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.activity;
+package com.iot.myfridge.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,14 +12,13 @@ import android.view.View;
 
 import android.widget.Toast;
 
-
-import com.qstm.tabdesign.R;
-import com.qstm.tabdesign.adapter.ViewPagerAdapter;
-import com.qstm.tabdesign.fragment.CommunityFragment;
-import com.qstm.tabdesign.fragment.HomeFragment;
-import com.qstm.tabdesign.fragment.UserFragment;
-import com.qstm.tabdesign.utils.ActivityUtils;
-import com.qstm.tabdesign.utils.BottomNavigationViewHelper;
+import com.iot.myfridge.R;
+import com.iot.myfridge.adapter.ViewPagerAdapter;
+import com.iot.myfridge.fragment.CommunityFragment;
+import com.iot.myfridge.fragment.HomeFragment;
+import com.iot.myfridge.fragment.UserFragment;
+import com.iot.myfridge.utils.ActivityUtils;
+import com.iot.myfridge.utils.BottomNavigationViewHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

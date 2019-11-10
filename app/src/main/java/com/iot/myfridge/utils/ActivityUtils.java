@@ -1,4 +1,4 @@
-package com.qstm.tabdesign.utils;
+package com.iot.myfridge.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
