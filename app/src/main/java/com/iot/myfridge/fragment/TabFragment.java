@@ -1,5 +1,5 @@
 package com.iot.myfridge.fragment;
-
+// hfood
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,10 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2017/12/19 0019.
- */
-
 public class TabFragment extends Fragment {
 
     @BindView(R.id.recycler)
@@ -39,7 +35,7 @@ public class TabFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragmeny_tab, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         mPosition = getArguments().getInt("position");
         initView();
@@ -54,7 +50,7 @@ public class TabFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecycleViewAdapter(R.layout.home_item_view, mdata);
+        mAdapter = new RecycleViewAdapter(R.layout.food_item_view, mdata);
 
         View top = getLayoutInflater().inflate(R.layout.layout_banner, (ViewGroup) mRecyclerView.getParent(), false);
         mBanner = top.findViewById(R.id.banner);
@@ -65,14 +61,14 @@ public class TabFragment extends Fragment {
 
     private void initData() {
         for (int i = 0; i < 20; i++) {
-            mdata.add("TabFragment_" + mPosition + "第" + i + "条数据");
+            mdata.add("Apple");
         }
         mAdapter.setNewData(mdata);//模拟网络请求成功后要调用这个方法刷新数据
         if (mPosition == 0) {
             imageUrl.clear();
-            imageUrl.add("http://mpic.tiankong.com/aa4/fd8/aa4fd84a633298f43fe4521ba9a2dcbc/640.jpg");
-            imageUrl.add("http://mpic.tiankong.com/34d/ee2/34dee24f36c176651e0b64dbc8f5d170/640.jpg");
-            imageUrl.add("http://mpic.tiankong.com/5a4/a2d/5a4a2dc36ad6d42ba95ee8c2afd8e038/640.jpg");
+            imageUrl.add("http://i1.chuimg.com/426809f97f0c41d5a4b8c121aa019cb4_1080w_810h.jpg");
+            imageUrl.add("http://i2.chuimg.com/89de42bf21914e74ad1e492634de9635_1656w_1242h.jpg");
+            imageUrl.add("http://i1.chuimg.com/7b29ab748a8211e6b87c0242ac110003_2048w_1536h.jpg");
             initBanner(imageUrl);
         } else {
             mBanner.setVisibility(View.GONE);

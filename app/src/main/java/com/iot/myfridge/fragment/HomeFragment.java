@@ -1,5 +1,5 @@
 package com.iot.myfridge.fragment;
-
+// home is food
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -26,10 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-
-/**
- * 首页
- */
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.tablayout)
@@ -75,19 +71,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mTabs.clear();
         }
         //替换成从服务器接口请求数据就成动态了
-        mTabs.add("特惠新品");
-        mTabs.add("有机果蔬");
-        mTabs.add("放养牲畜");
-        mTabs.add("健康吧");
-        mTabs.add("调味品");
-        mTabs.add("素食者");
-        mTabs.add("时令食品");
-        mTabs.add("野生菌类");
-        mTabs.add("放养家禽");
-        mTabs.add("休闲吧");
-        mTabs.add("粮油类");
-        mTabs.add("素食类");
-        mTabs.add("周边菜场");
+        mTabs.add("Foods");
+        mTabs.add("Fruits");
+        mTabs.add("Vegetables");
+        mTabs.add("Meat");
+        mTabs.add("Dairy");
 
         //动态添加Fragment
         for (int i = 0; i < mTabs.size(); i++) {
@@ -126,7 +114,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         gridAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getActivity(),"点击了"+mTabs.get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"click on"+mTabs.get(position),Toast.LENGTH_SHORT).show();
                 tabViewpager.setCurrentItem(position);
                 popupWindow.dismiss();
             }

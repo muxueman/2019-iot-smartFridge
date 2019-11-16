@@ -8,11 +8,6 @@ import com.iot.myfridge.R;
 
 import java.util.List;
 
-
-/**
- * Created by Administrator on 2017/12/19 0019.
- */
-
 public class RecycleViewGridAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     public RecycleViewGridAdapter(int layoutResId, @Nullable List<String> data) {
         super(layoutResId, data);

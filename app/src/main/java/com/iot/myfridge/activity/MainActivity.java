@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.iot.myfridge.R;
 import com.iot.myfridge.adapter.ViewPagerAdapter;
-import com.iot.myfridge.fragment.CommunityFragment;
+import com.iot.myfridge.fragment.NotificationFragment;
 import com.iot.myfridge.fragment.HomeFragment;
 import com.iot.myfridge.fragment.UserFragment;
 import com.iot.myfridge.utils.ActivityUtils;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new CommunityFragment());
+        adapter.addFragment(new NotificationFragment());
         adapter.addFragment(new UserFragment());
         viewpager.setAdapter(adapter);
         viewpager.setCurrentItem(0);
@@ -103,18 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onPageScrollStateChanged(int state) {
             }
         });
-
-        //禁止ViewPager滑动
-        /*
-            viewpager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-         */
-
     }
 
 
