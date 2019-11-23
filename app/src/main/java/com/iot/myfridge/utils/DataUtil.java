@@ -3,7 +3,6 @@ package com.iot.myfridge.utils;
 import android.util.Log;
 
 import com.iot.myfridge.database.DatabaseHandler;
-
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,11 +21,9 @@ public class DataUtil {
 
     // get current date for store date and eaten date
     public Date getTodaysDate(){
-
         Calendar today = Calendar.getInstance();
         today.clear(Calendar.HOUR); today.clear(Calendar.MINUTE); today.clear(Calendar.SECOND);
         Date todayDate = today.getTime();
-
         return todayDate;
     }
     // to calculate left days
@@ -63,7 +60,6 @@ public class DataUtil {
                 date=sdf.parse(datestr);
                 Log.d("prefDate","first:"+ datestr);
                 return date;
-
             } catch (ParseException e) {
                 try {
                     sdf = new SimpleDateFormat(dateFormates[i], Locale.GERMAN);
