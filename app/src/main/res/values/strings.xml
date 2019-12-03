@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyFridge</string>
+    <string name="intent_query_key">query</string>
 </resources>

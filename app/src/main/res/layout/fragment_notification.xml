@@ -23,29 +23,23 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="96dp"
         android:background="@color/white">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tablayout"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:tabIndicatorColor="@color/cornflowerblue"
-            android:layout_toLeftOf="@+id/iv_fenlei"
-            app:tabIndicatorHeight="1dp"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/cornflowerblue"
-            />
-        <ImageView
-            android:id="@+id/iv_fenlei"
-            android:layout_width="wrap_content"
+            android:hint="Enter Recipe"
+            android:id="@+id/tvQuery"/>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/ic_fenlei"/>
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="48dp"
+            android:onClick="buttonPressed"
+            android:text="Search Recipe" />
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    private static final String TAG = "MainActivity";
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
     @BindView(R.id.viewpager)
@@ -106,13 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    /**
-     * 双击退出应用
-     *
-     * @param keyCode
-     * @param event
-     * @return
-     */
+    // double click for exit
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -139,4 +133,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
 }

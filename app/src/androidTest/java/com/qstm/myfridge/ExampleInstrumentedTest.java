@@ -1,4 +1,4 @@
-package com.qstm.tabdesign;
+package com.qstm.myfridge;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

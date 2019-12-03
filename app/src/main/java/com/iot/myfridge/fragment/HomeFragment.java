@@ -33,8 +33,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.tab_viewpager)
     ViewPager tabViewpager;
     Unbinder unbinder;
-    @BindView(R.id.iv_fenlei)
-    ImageView mIvFenlei;
+    //@BindView(R.id.iv_fenlei)
+    //ImageView mIvFenlei;
 
 
     private List<Fragment> mFragmentArrays = new ArrayList<>();
@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView(View view) {
-        mIvFenlei.setOnClickListener(this);
+       // mIvFenlei.setOnClickListener(this);
         tablayout.removeAllTabs();
         tabViewpager.removeAllViews();
         if (mFragmentArrays != null) {
@@ -71,9 +71,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mTabs.clear();
         }
         //替换成从服务器接口请求数据就成动态了
-        mTabs.add("Foods");
-        mTabs.add("Fruits");
-        mTabs.add("Vegetables");
+        mTabs.add("ALL");
+        mTabs.add("Garden");
         mTabs.add("Meat");
         mTabs.add("Dairy");
 
@@ -95,9 +94,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_fenlei:
-                startPopuwindows(view);
-                break;
+
         }
     }
 
