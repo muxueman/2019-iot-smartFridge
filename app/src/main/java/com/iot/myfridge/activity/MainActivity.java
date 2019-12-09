@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("MainActivity","______onCreate execute_______");
         ButterKnife.bind(this);
 
         ActivityUtils.StatusBarLightMode(this);
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new NotificationFragment());
         adapter.addFragment(new UserFragment());

@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -33,9 +32,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.tab_viewpager)
     ViewPager tabViewpager;
     Unbinder unbinder;
-    //@BindView(R.id.iv_fenlei)
-    //ImageView mIvFenlei;
-
 
     private List<Fragment> mFragmentArrays = new ArrayList<>();
     private List<String> mTabs = new ArrayList<>();
@@ -44,7 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //解决点击“我的”回来方法二，首页空白的问题，推荐的方法
+
         if (view != null) {
             unbinder = ButterKnife.bind(this, view);//必须加，不然报ButterKnife的异常
             ViewGroup parent = (ViewGroup) view.getParent();
@@ -54,23 +50,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             return view;
         }
 
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_food, container, false);
 
-        unbinder = ButterKnife.bind(this, view);//这里也得有，不然报ButterKnife的异常
+        unbinder = ButterKnife.bind(this, view);
 
         initView(view);
         return view;
     }
 
     private void initView(View view) {
-       // mIvFenlei.setOnClickListener(this);
         tablayout.removeAllTabs();
         tabViewpager.removeAllViews();
         if (mFragmentArrays != null) {
             mFragmentArrays.clear();
             mTabs.clear();
         }
-        //替换成从服务器接口请求数据就成动态了
         mTabs.add("ALL");
         mTabs.add("Garden");
         mTabs.add("Meat");
@@ -97,34 +91,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         }
     }
-
-    private void startPopuwindows(View view1) {
-        View view=LayoutInflater.from(getActivity()).inflate(R.layout.layout_main_popuwindows,null);
-        RecyclerView recyclerView=view.findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
-        RecycleViewGridAdapter gridAdapter=new RecycleViewGridAdapter(R.layout.item_gride_fenlei,mTabs);
-        recyclerView.setAdapter(gridAdapter);
-
-        final PopupWindow popupWindow=new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,true);
-        popupWindow.showAsDropDown(view1);
-
-        gridAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getActivity(),"click on"+mTabs.get(position),Toast.LENGTH_SHORT).show();
-                tabViewpager.setCurrentItem(position);
-                popupWindow.dismiss();
-            }
-        });
-        gridAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                tabViewpager.setCurrentItem(position);
-                popupWindow.dismiss();
-            }
-        });
-    }
-
 
     @Override
     public void onDestroyView() {

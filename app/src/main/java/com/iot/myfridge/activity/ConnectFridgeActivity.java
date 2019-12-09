@@ -29,7 +29,6 @@ public class ConnectFridgeActivity extends AppCompatActivity {
 
     private EditText urlText;
     private Button conntectButton;
-    private Button checkButton;
     String urlPath = new String();
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private static final int REQUEST_AUDIO = 0;
@@ -56,24 +55,6 @@ public class ConnectFridgeActivity extends AppCompatActivity {
         }
         urlText =(EditText)findViewById(R.id.fridge_id);
         conntectButton = (Button)findViewById(R.id.connect_button);
-        checkButton = (Button)findViewById(R.id.check_button);
-
-        checkButton.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                urlPath = urlText.getText().toString();
-                String path = "http://" + urlPath + "/?msg=";
-                String res = "check";
-                if (res.indexOf("time") != -1) {
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-                    res = "time=" + df.format(new Date());
-                }
-                sendGet(path, res);
-            }
-        });
-
-
 
     }
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {

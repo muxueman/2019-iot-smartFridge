@@ -1,6 +1,5 @@
 package com.iot.myfridge.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iot.myfridge.R;
-import com.iot.myfridge.activity.ConnectFridgeActivity;
 
 public class UserFragment extends Fragment  {
 
@@ -23,7 +21,7 @@ public class UserFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_notification, container, false);
         //userPagerAdapter = new UserPagerAdapter(getSupportFragementManagement())
         viewPager = view.findViewById(R.id.userpager);
         //viewPager.setAdapter(userPagerAdapter);
