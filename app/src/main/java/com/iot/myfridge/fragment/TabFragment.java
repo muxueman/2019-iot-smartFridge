@@ -1,5 +1,5 @@
 package com.iot.myfridge.fragment;
-// hfood
+// make this part of function as a way to appeal to advertise
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

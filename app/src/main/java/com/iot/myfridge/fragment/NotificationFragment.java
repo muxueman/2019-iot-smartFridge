@@ -1,6 +1,5 @@
 package com.iot.myfridge.fragment;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -25,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iot.myfridge.R;
@@ -48,9 +46,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class NotificationFragment extends Fragment {
 
-    //@BindView(R.id.fridge_id)
     private EditText urlText;
-    //@BindView(R.id.connect_button)
     private Button connectBtn;
     @BindView(R.id.fridge)
     ImageView fridgeBtn;

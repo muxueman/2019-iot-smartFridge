@@ -111,6 +111,7 @@ public class CurrentGood {
     }
 
     // for test
+    /***
     public static void main(String[] args){
         ArrayList<CurrentGood> testCurrentLists = new ArrayList<>();
         System.out.println(new DataUtil().getTodaysDate());
@@ -146,5 +147,6 @@ public class CurrentGood {
         testCurrentLists.add(new CurrentGood("Ham","11", 1));
         testCurrentLists.add(new CurrentGood("orange","05", 2));
     }
+     ***/
 }
 

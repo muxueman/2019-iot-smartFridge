@@ -86,6 +86,7 @@ public class HistoryGood {
         return icon;
     }
 
+    /***
     public static void main(String[] args) {
         ArrayList<HistoryGood> testHistoryLists = new ArrayList<>();
         //System.out.println(new DataUtil().getTodaysDate());
@@ -155,4 +156,5 @@ public class HistoryGood {
         testHistoryLists.add(new HistoryGood("Beef", "11", 1));
         testHistoryLists.add(new HistoryGood("Spinach", "11", 1));
     }
+     ***/
 }
