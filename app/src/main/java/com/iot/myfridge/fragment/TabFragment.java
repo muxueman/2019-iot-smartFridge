@@ -1,5 +1,7 @@
 package com.iot.myfridge.fragment;
 // hfood
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -66,9 +68,9 @@ public class TabFragment extends Fragment {
         mAdapter.setNewData(mdata);//模拟网络请求成功后要调用这个方法刷新数据
         if (mPosition == 0) {
             imageUrl.clear();
-            imageUrl.add("http://i1.chuimg.com/426809f97f0c41d5a4b8c121aa019cb4_1080w_810h.jpg");
-            imageUrl.add("http://i2.chuimg.com/89de42bf21914e74ad1e492634de9635_1656w_1242h.jpg");
-            imageUrl.add("http://i1.chuimg.com/7b29ab748a8211e6b87c0242ac110003_2048w_1536h.jpg");
+            imageUrl.add("https://pret-files.azureedge.net/pretamanger-usa/07846-us-catering/lunch-thumb-dt.jpg");
+            imageUrl.add("https://dining.columbia.edu/sites/default/files/styles/cu_crop/public/content/Retail%20Location%20Photos/Butlerhero.jpg?h=da1da850&itok=yMKQPKs-");
+            imageUrl.add("https://image.shutterstock.com/image-photo/hawaiian-salmon-shrimp-poke-bowls-260nw-1177552357.jpg");
             initBanner(imageUrl);
         } else {
             mBanner.setVisibility(View.GONE);
@@ -84,6 +86,21 @@ public class TabFragment extends Fragment {
         mBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
+                if(position == 0){
+                    Uri uri = Uri.parse("https://www.pret.com/en-us/catering");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    getActivity().startActivity(intent);
+                }
+                if(position == 1){
+                    Uri uri = Uri.parse("https://dining.columbia.edu/content/blue-java-cafe-butler-library-0#/61");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    getActivity().startActivity(intent);
+                }
+                if(position ==2){
+                    Uri uri = Uri.parse("http://hulapokeusa.com/Gallery.html");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    getActivity().startActivity(intent);
+                }
 
             }
         });

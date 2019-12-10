@@ -29,7 +29,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iot.myfridge.R;
+import com.iot.myfridge.activity.LineChartActivity1;
 import com.iot.myfridge.activity.PiePolylineChartActivity;
+import com.iot.myfridge.activity.RadarChartActivity;
 import com.iot.myfridge.utils.Constants;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -54,6 +56,8 @@ public class NotificationFragment extends Fragment {
     ImageView fridgeBtn;
     @BindView(R.id.nutrition)
     Button nutriBtn;
+    @BindView(R.id.pyramid)
+    Button pyraBtn;
     @BindView(R.id.calorie)
     Button calBtn;
     private String urlFridge;
@@ -74,6 +78,7 @@ public class NotificationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_fridge, container, false);
         ButterKnife.bind(this,view);
+        setSelectHistory(0);
         fridgeBtn = view.findViewById(R.id.fridge);
         fridgeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,17 +91,26 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PiePolylineChartActivity.class);
+                //intent.putExtra("select_history", selectHistory);
                 getActivity().startActivity(intent);
             }
         });
         calBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PiePolylineChartActivity.class);
+                Intent intent = new Intent(getActivity(), LineChartActivity1.class);
+                //intent.putExtra("select_history", selectHistory);
                 getActivity().startActivity(intent);
             }
         });
-
+        pyraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RadarChartActivity.class);
+                //intent.putExtra("select_history", selectHistory);
+                getActivity().startActivity(intent);
+            }
+        });
         setSpinner(view);
         return view;
     }
@@ -158,7 +172,7 @@ public class NotificationFragment extends Fragment {
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 //the rest for test
                 String test = "Fruit/Food/Plant/Apple/Orange/Monitor/";
-                getFood(test);
+                //getFood(test);
                 Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
             }
         });

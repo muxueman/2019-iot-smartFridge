@@ -1,5 +1,7 @@
 package com.iot.myfridge.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
@@ -30,7 +32,10 @@ public class UserFragment extends Fragment  {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showConnectFridgeDialog();
+
+                Uri uri = Uri.parse("https://www.baidu.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                getActivity().startActivity(intent);
             }
         });
 
