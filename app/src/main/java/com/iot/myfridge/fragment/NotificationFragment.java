@@ -1,9 +1,11 @@
 package com.iot.myfridge.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -21,14 +24,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iot.myfridge.R;
-import com.iot.myfridge.activity.MainActivity;
+import com.iot.myfridge.activity.PiePolylineChartActivity;
 import com.iot.myfridge.utils.Constants;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,7 +44,7 @@ import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 
-public class NotificationFragment extends Fragment  {
+public class NotificationFragment extends Fragment {
 
     //@BindView(R.id.fridge_id)
     private EditText urlText;
@@ -48,10 +52,21 @@ public class NotificationFragment extends Fragment  {
     private Button connectBtn;
     @BindView(R.id.fridge)
     ImageView fridgeBtn;
+    @BindView(R.id.nutrition)
+    Button nutriBtn;
+    @BindView(R.id.calorie)
+    Button calBtn;
     private String urlFridge;
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<Boolean> bl = new ArrayList<>();
     private SimpleAdapter simpleAdapter;
+
+    private Spinner spinner;
+    private int selectHistory;
+    private ArrayAdapter<String> selectAdapter;
+    private static final String[] years = { "Today", "Last Week", "Last Month", "History" };
+    private ArrayList<String> array = new ArrayList<String>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +82,22 @@ public class NotificationFragment extends Fragment  {
             }
         });
 
+        nutriBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PiePolylineChartActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        calBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PiePolylineChartActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        setSpinner(view);
         return view;
     }
 
@@ -230,7 +261,7 @@ public class NotificationFragment extends Fragment  {
             if (cBox.isChecked()) {
                 cBox.setChecked(false);
             } else {
-                Log.i("TAG", "取消该选项");
+                //Log.i("TAG", "取消该选项");
                 cBox.setChecked(true);
             }
 
@@ -283,4 +314,39 @@ public class NotificationFragment extends Fragment  {
     private void setSimpleAdapter(SimpleAdapter adapter){
         this.simpleAdapter = adapter;
     }
+    public void setSpinner(View view){
+        spinner = (Spinner) view.findViewById(R.id.day_select);
+
+        //tv = (TextView) view.findViewById(R.id.textView1);
+
+        for (int i = 0; i < years.length; i++) {
+            array.add(years[i]);
+        }
+        selectAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, array);
+        selectAdapter.setDropDownViewResource(R.layout.dropdown);
+
+        spinner.setAdapter(selectAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // TODO 自动生成的方法存根
+                setSelectHistory(position);
+                parent.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO 自动生成的方法存根
+                setSelectHistory(0);
+            }
+
+        });
+    }
+    private void setSelectHistory(int postion){
+        selectHistory = postion;
+    }
+
 }

@@ -22,7 +22,9 @@
         <activity
             android:name="com.iot.myfridge.activity.GridActivity"
             android:parentActivityName="com.iot.myfridge.activity.MainActivity"/>
-        <activity android:name="com.iot.myfridge.activity.RecipeActivity"></activity>
+        <activity android:name="com.iot.myfridge.activity.RecipeActivity"/>
+        <activity android:name="com.iot.myfridge.activity.PiePolylineChartActivity" />
+        <activity android:name="com.iot.myfridge.activity.HappyActivity" />
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package com.iot.myfridge.fragment;
 // home is food
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,11 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.iot.myfridge.R;
+import com.iot.myfridge.activity.GridActivity;
+import com.iot.myfridge.activity.HappyActivity;
 import com.iot.myfridge.adapter.RecycleViewGridAdapter;
 import com.iot.myfridge.adapter.TabFragmentAdapter;
 
@@ -32,6 +38,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.tab_viewpager)
     ViewPager tabViewpager;
     Unbinder unbinder;
+    @BindView(R.id.tvQuery)
+    EditText tvQuery;
+    @BindView(R.id.btnSearch)
+    Button btnSearch;
 
     private List<Fragment> mFragmentArrays = new ArrayList<>();
     private List<String> mTabs = new ArrayList<>();
@@ -53,9 +63,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_food, container, false);
 
         unbinder = ButterKnife.bind(this, view);
-
+        tvQuery.setText( "chicken" );
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonPressed(view);
+            }
+        });
         initView(view);
         return view;
+    }
+
+    public void buttonPressed(View view) {
+        String q = tvQuery.getText().toString();
+
+        if( !q.isEmpty() ) {
+            Intent intent = new Intent(getActivity(), GridActivity.class);
+            intent.putExtra(getString(R.string.intent_query_key), tvQuery.getText().toString());
+            getActivity().startActivity(intent);
+        }
     }
 
     private void initView(View view) {

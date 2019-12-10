@@ -47,7 +47,9 @@ public class GridActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //getSupportActionBar().setHomeButtonEnabled(true);
         ButterKnife.bind(this);
 
         query = getIntent().getStringExtra(getString(R.string.intent_query_key));
