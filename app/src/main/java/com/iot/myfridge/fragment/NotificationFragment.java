@@ -192,6 +192,9 @@ public class NotificationFragment extends Fragment {
         allSItem.put("text", "ALL");
         mData.add(allSItem);
         bl.add(false);
+        //allSItem.put("text", "Apple");
+        //mData.add(allSItem);
+        //bl.add(false);
         for (int fd =0; fd<foodDetected.size();fd++){
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("text",foodDetected.get(fd));

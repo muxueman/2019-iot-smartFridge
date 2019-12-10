@@ -1,10 +1,14 @@
 package com.iot.myfridge.data;
 
+import com.iot.myfridge.utils.DataUtil;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class CurrentGood {
 
-    private int Cid;
+    private String Cid;
     private String name;
     private Date storeDate;   // int year, int month, int date
     private Date expDate;
@@ -12,13 +16,28 @@ public class CurrentGood {
     private String label;    // same as original basicGood.label
     private int calories; // total calories
     private int quantity;
-    private int icon;        // same as original basicGood.id
+    private int icon;        // same as original basicGood.id, 改成String = name
 
     // constructor
     public CurrentGood(){
         //this.leftDay = ;
     };
-    public CurrentGood(int Cid){
+
+    public CurrentGood(String name, String storeDate, int quantity){
+
+        this.Cid = UUID.randomUUID().toString();
+        this.name = name;
+        //this.storeDate = sktoreDate;
+        //this.expDate = expDate;
+        //this.leftDay = new DataUtil().getDateDiff(storeDate,expDate);
+        //this.label =
+        //this.calories =
+        //this.protein =
+        //this.fat =
+        // this.carbs =
+        this.quantity = quantity;
+    }
+    public CurrentGood(String Cid){
         this.Cid = Cid;
         //todo icon
     }
@@ -55,7 +74,7 @@ public class CurrentGood {
 
     // getter
 
-    public int getCid() {
+    public String getCid() {
         return Cid;
     }
 
@@ -89,6 +108,43 @@ public class CurrentGood {
 
     public int getIcon() {
         return icon;
+    }
+
+    // for test
+    public static void main(String[] args){
+        ArrayList<CurrentGood> testCurrentLists = new ArrayList<>();
+        System.out.println(new DataUtil().getTodaysDate());
+        testCurrentLists.add(new CurrentGood("Milk","05", 7));
+        testCurrentLists.add(new CurrentGood("Egg","05", 12));
+        testCurrentLists.add(new CurrentGood("Orange","05", 2));
+        testCurrentLists.add(new CurrentGood("Bread","05", 8));
+        testCurrentLists.add(new CurrentGood("Fish","05", 1));
+        testCurrentLists.add(new CurrentGood("Orange Juice","05", 1));
+        testCurrentLists.add(new CurrentGood("Broccoli","05", 1));
+        testCurrentLists.add(new CurrentGood("Carrot","05", 1));
+        testCurrentLists.add(new CurrentGood("Spinach","05", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Wing","05", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Salad","05", 1));
+        testCurrentLists.add(new CurrentGood("Apple","05", 4));
+        testCurrentLists.add(new CurrentGood("Beef","06", 2));
+        testCurrentLists.add(new CurrentGood("Corn","06", 3));
+        testCurrentLists.add(new CurrentGood("Tomato","07", 3));
+        testCurrentLists.add(new CurrentGood("Ice Cream","07", 1));
+        testCurrentLists.add(new CurrentGood("Shrimp","08", 8));
+        testCurrentLists.add(new CurrentGood("Chicken Salad","08", 1));
+        testCurrentLists.add(new CurrentGood("Cheese Cake","08", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Wing","09", 2));
+        testCurrentLists.add(new CurrentGood("Apple","09", 3));
+        testCurrentLists.add(new CurrentGood("Sushi","10", 1));
+        testCurrentLists.add(new CurrentGood("Potato","10", 2));
+        testCurrentLists.add(new CurrentGood("Beef","10", 2));
+        testCurrentLists.add(new CurrentGood("Spinach","10", 2));
+        testCurrentLists.add(new CurrentGood("Broccoli","10", 2));
+        testCurrentLists.add(new CurrentGood("Orange","11", 2));
+        testCurrentLists.add(new CurrentGood("Orange Juice","11", 1));
+        testCurrentLists.add(new CurrentGood("Carrot","11", 1));
+        testCurrentLists.add(new CurrentGood("Ham","11", 1));
+        testCurrentLists.add(new CurrentGood("orange","05", 2));
     }
 }
 
