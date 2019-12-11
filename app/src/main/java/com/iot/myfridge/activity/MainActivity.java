@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.iot.myfridge.R;
 import com.iot.myfridge.adapter.ViewPagerAdapter;
+import com.iot.myfridge.database.FridgeDatabase;
 import com.iot.myfridge.fragment.NotificationFragment;
 import com.iot.myfridge.fragment.HomeFragment;
 import com.iot.myfridge.fragment.UserFragment;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.viewpager)
     ViewPager viewpager;
     private MenuItem menuItem;
-
     private boolean mIsExit;
 
     @Override
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.d("MainActivity","______onCreate execute_______");
         ButterKnife.bind(this);
-
         ActivityUtils.StatusBarLightMode(this);
         ActivityUtils.setStatusBarColor(this, R.color.cornflowerblue);//设置状态栏颜色
         initView();
@@ -134,5 +133,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
 }

@@ -61,8 +61,8 @@ public class NotificationFragment extends Fragment {
     Button pyraBtn;
     @BindView(R.id.calorie)
     Button calBtn;
-    @BindView(R.id.button_send_noti)
-    Button sendBtn;
+    //@BindView(R.id.button_send_noti)
+    //Button sendBtn;
     private String urlFridge;
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<Boolean> bl = new ArrayList<>();
@@ -117,6 +117,7 @@ public class NotificationFragment extends Fragment {
         });
         setSpinner(view);
 
+        /***
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,6 +141,7 @@ public class NotificationFragment extends Fragment {
             }
 
         });
+         ***/
         return view;
     }
 
