@@ -89,7 +89,7 @@ public class Noti {
     }
 
     //for test
-    /***
+/***
     public static void main (String[] args) {
 
         ArrayList<Noti> testNotis = new ArrayList<>();
@@ -101,7 +101,7 @@ public class Noti {
         testNotis.add(testNoti1);
 
         ArrayList<String> testNames2 = new ArrayList<>();
-        testNames2.add("Chicken Wing");
+        testNames2.add("Beef");
         Noti testNoti2 = new Noti(1,testNames2);
         testNoti2.setNotiDate("7");
         testNotis.add(testNoti2);
@@ -145,9 +145,10 @@ public class Noti {
         testNotis.add(testNoti8);
 
         for (Noti j : testNotis){
-            //System.out.println(j.getContent());
+            System.out.println(j.getContent());
         }
+        System.out.println(testNotis.size());
 
     }
-     ***/
+***/
 }

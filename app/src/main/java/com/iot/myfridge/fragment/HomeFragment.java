@@ -38,10 +38,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.tab_viewpager)
     ViewPager tabViewpager;
     Unbinder unbinder;
-    @BindView(R.id.tvQuery)
-    EditText tvQuery;
-    @BindView(R.id.btnSearch)
-    Button btnSearch;
+
 
     private List<Fragment> mFragmentArrays = new ArrayList<>();
     private List<String> mTabs = new ArrayList<>();
@@ -63,25 +60,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_food, container, false);
 
         unbinder = ButterKnife.bind(this, view);
-        tvQuery.setText( "chicken" );
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonPressed(view);
-            }
-        });
+
         initView(view);
         return view;
-    }
-
-    public void buttonPressed(View view) {
-        String q = tvQuery.getText().toString();
-
-        if( !q.isEmpty() ) {
-            Intent intent = new Intent(getActivity(), GridActivity.class);
-            intent.putExtra(getString(R.string.intent_query_key), tvQuery.getText().toString());
-            getActivity().startActivity(intent);
-        }
     }
 
     private void initView(View view) {
@@ -92,9 +73,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mTabs.clear();
         }
         mTabs.add("ALL");
-        mTabs.add("Garden");
+        mTabs.add("Veg&Fruit");
         mTabs.add("Meat");
-        mTabs.add("Dairy");
+        mTabs.add("Other");
 
         //动态添加Fragment
         for (int i = 0; i < mTabs.size(); i++) {
