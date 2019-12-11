@@ -96,4 +96,31 @@ public class Constants {
         nameLabels.put("Ham","Meat");
         return nameLabels;
     }
+
+    public Map<String, String> NameCal(){
+        Map<String, Integer> nameCals = new HashMap<>();
+        nameCals.put("Milk",23);
+        nameLabels.put("Egg","Egg");
+        nameLabels.put("Orange","Fruit");
+        nameLabels.put("Bread","Bread");
+        nameLabels.put("Fish","Fish");
+        nameLabels.put("Juice","Sugar Drinks");
+        nameLabels.put("Broccoli","Vegetables");
+        nameLabels.put("Carrot","Vegetables");
+        nameLabels.put("Spinach","Vegetables");
+        nameLabels.put("Chicken Wing","Meat");
+        nameLabels.put("Chicken Salad","Meat");
+        nameLabels.put("Apple","Fruit");
+        nameLabels.put("Beef","Meat");
+        nameLabels.put("Corn","Vegetables");
+        nameLabels.put("Tomato","Vegetables");
+        nameLabels.put("Ice Cream","Sweets");
+        nameLabels.put("Shrimp","Sea Food");
+        nameLabels.put("Cheese Cake","Sweets");
+        nameLabels.put("Sushi","Coarse Grain");
+        nameLabels.put("Potato","Vegetables");
+        nameLabels.put("Ham","Meat");
+        return nameCals;
+    }
+
 }
