@@ -1,5 +1,7 @@
 package com.iot.myfridge.utils;
 
+import com.iot.myfridge.data.CurrentGood;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,10 +34,11 @@ public class Constants {
         System.out.println(foodDetected);
     }
      ***/
-    public void LabelUnit(){
+    public Map<String, String> LabelUnit(){
         Map<String, String> labelUnits= new HashMap<>();
         labelUnits.put("Vegetables","dish");
         labelUnits.put("Bread","slice");
+        labelUnits.put("Rice","bowl");
         labelUnits.put("Staple Food","bowl");
         labelUnits.put("Coarse Grain","portion");
         labelUnits.put("Fruit","each");
@@ -47,7 +50,8 @@ public class Constants {
         labelUnits.put("Sweets","portion");
         labelUnits.put("Junk Food","portion");
         labelUnits.put("Sugar Drinks","bottle");
-        // 13
+        // 14
+        return labelUnits;
     }
     public void LabelPyramid(){
         Map<String, Integer> labelPyramids= new HashMap<>();
@@ -65,5 +69,31 @@ public class Constants {
         labelPyramids.put("Sweets",4);
         labelPyramids.put("Junk Food",4);
         labelPyramids.put("Sugar Drinks",4);
+    }
+
+    public Map<String, String> NameLabel() {
+        Map<String, String> nameLabels = new HashMap<>();
+        nameLabels.put("Milk","Milk");
+        nameLabels.put("Egg","Egg");
+        nameLabels.put("Orange","Fruit");
+        nameLabels.put("Bread","Bread");
+        nameLabels.put("Fish","Fish");
+        nameLabels.put("Juice","Sugar Drinks");
+        nameLabels.put("Broccoli","Vegetables");
+        nameLabels.put("Carrot","Vegetables");
+        nameLabels.put("Spinach","Vegetables");
+        nameLabels.put("Chicken Wing","Meat");
+        nameLabels.put("Chicken Salad","Meat");
+        nameLabels.put("Apple","Fruit");
+        nameLabels.put("Beef","Meat");
+        nameLabels.put("Corn","Vegetables");
+        nameLabels.put("Tomato","Vegetables");
+        nameLabels.put("Ice Cream","Sweets");
+        nameLabels.put("Shrimp","Sea Food");
+        nameLabels.put("Cheese Cake","Sweets");
+        nameLabels.put("Sushi","Coarse Grain");
+        nameLabels.put("Potato","Vegetables");
+        nameLabels.put("Ham","Meat");
+        return nameLabels;
     }
 }

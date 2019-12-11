@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.iot.myfridge.R;
 import com.iot.myfridge.adapter.RecycleViewAdapter;
+import com.iot.myfridge.data.CurrentGood;
+import com.iot.myfridge.utils.DataUtil;
 import com.iot.myfridge.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +35,7 @@ public class TabFragment extends Fragment {
     int mPosition;
     private RecycleViewAdapter mAdapter;
     private Banner mBanner;
+    ArrayList<CurrentGood> testGoods;
 
     @Nullable
     @Override
@@ -51,7 +55,7 @@ public class TabFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecycleViewAdapter(R.layout.food_item_view, mdata);
+        mAdapter = new RecycleViewAdapter(R.layout.food_item_view, mdata,testGoods);
 
         View top = getLayoutInflater().inflate(R.layout.layout_banner, (ViewGroup) mRecyclerView.getParent(), false);
         mBanner = top.findViewById(R.id.banner);
@@ -61,9 +65,16 @@ public class TabFragment extends Fragment {
     }
 
     private void initData() {
-        for (int i = 0; i < 20; i++) {
-            mdata.add("Apple");
+
+        testGoods = new ArrayList<>();
+        testGoods = initTestGoods();
+        for (CurrentGood c : testGoods){
+            mdata.add(c.getName());
         }
+
+        //for (int i = 0; i < 19; i++) {
+         //   mdata.add("Pear");
+        //}
         mAdapter.setNewData(mdata);//模拟网络请求成功后要调用这个方法刷新数据
         if (mPosition == 0) {
             imageUrl.clear();
@@ -125,5 +136,42 @@ public class TabFragment extends Fragment {
         super.onStop();
         //结束轮播
         mBanner.stopAutoPlay();
+    }
+
+    private ArrayList<CurrentGood> initTestGoods(){
+        ArrayList<CurrentGood> testCurrentLists = new ArrayList<>();
+        System.out.println(new DataUtil().getTodaysDate());
+        testCurrentLists.add(new CurrentGood("Milk","05", 7));
+        testCurrentLists.add(new CurrentGood("Egg","05", 12));
+        testCurrentLists.add(new CurrentGood("Orange","05", 2));
+        testCurrentLists.add(new CurrentGood("Bread","05", 8));
+        testCurrentLists.add(new CurrentGood("Fish","05", 1));
+        testCurrentLists.add(new CurrentGood("Juice","05", 1));
+        testCurrentLists.add(new CurrentGood("Broccoli","05", 1));
+        testCurrentLists.add(new CurrentGood("Carrot","05", 1));
+        testCurrentLists.add(new CurrentGood("Spinach","05", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Wing","05", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Salad","05", 1));
+        testCurrentLists.add(new CurrentGood("Apple","05", 4));
+        testCurrentLists.add(new CurrentGood("Beef","06", 2));
+        testCurrentLists.add(new CurrentGood("Corn","06", 3));
+        testCurrentLists.add(new CurrentGood("Tomato","07", 3));
+        testCurrentLists.add(new CurrentGood("Ice Cream","07", 1));
+        testCurrentLists.add(new CurrentGood("Shrimp","08", 8));
+        testCurrentLists.add(new CurrentGood("Chicken Salad","08", 1));
+        testCurrentLists.add(new CurrentGood("Cheese Cake","08", 1));
+        testCurrentLists.add(new CurrentGood("Chicken Wing","09", 2));
+        testCurrentLists.add(new CurrentGood("Apple","09", 3));
+        testCurrentLists.add(new CurrentGood("Sushi","10", 1));
+        testCurrentLists.add(new CurrentGood("Potato","10", 2));
+        testCurrentLists.add(new CurrentGood("Beef","10", 2));
+        testCurrentLists.add(new CurrentGood("Spinach","10", 2));
+        testCurrentLists.add(new CurrentGood("Broccoli","10", 2));
+        testCurrentLists.add(new CurrentGood("Orange","11", 2));
+        testCurrentLists.add(new CurrentGood("Juice","11", 1));
+        testCurrentLists.add(new CurrentGood("Carrot","11", 1));
+        testCurrentLists.add(new CurrentGood("Ham","11", 1));
+        testCurrentLists.add(new CurrentGood("Orange","05", 2));
+        return testCurrentLists;
     }
 }

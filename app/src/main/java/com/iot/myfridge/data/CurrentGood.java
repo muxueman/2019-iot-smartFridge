@@ -1,5 +1,6 @@
 package com.iot.myfridge.data;
 
+import com.iot.myfridge.utils.Constants;
 import com.iot.myfridge.utils.DataUtil;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class CurrentGood {
         //this.storeDate = sktoreDate;
         //this.expDate = expDate;
         //this.leftDay = new DataUtil().getDateDiff(storeDate,expDate);
-        //this.label =
+         this.label = new Constants().NameLabel().get(name);
         //this.calories =
         //this.protein =
         //this.fat =

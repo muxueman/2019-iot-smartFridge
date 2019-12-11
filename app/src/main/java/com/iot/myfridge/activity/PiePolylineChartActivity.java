@@ -281,7 +281,7 @@ public class PiePolylineChartActivity extends DemoBase implements OnSeekBarChang
 
     private SpannableString generateCenterSpannableText() {
 
-        SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
+        SpannableString s = new SpannableString("Nutritions\ndeveloped by My Fridge");
         s.setSpan(new RelativeSizeSpan(1.5f), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);

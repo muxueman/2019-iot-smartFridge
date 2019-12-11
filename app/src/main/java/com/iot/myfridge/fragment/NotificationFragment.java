@@ -2,9 +2,12 @@ package com.iot.myfridge.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
@@ -43,6 +46,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 
 public class NotificationFragment extends Fragment {
 
@@ -56,10 +61,13 @@ public class NotificationFragment extends Fragment {
     Button pyraBtn;
     @BindView(R.id.calorie)
     Button calBtn;
+    @BindView(R.id.button_send_noti)
+    Button sendBtn;
     private String urlFridge;
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<Boolean> bl = new ArrayList<>();
     private SimpleAdapter simpleAdapter;
+    private ArrayList<Map<String, Object>> mData;
 
     private Spinner spinner;
     private int selectHistory;
@@ -108,6 +116,30 @@ public class NotificationFragment extends Fragment {
             }
         });
         setSpinner(view);
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotificationManager manager = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+
+                Notification notification = new Notification.Builder(getActivity())
+
+                        .setContentTitle("标题")
+
+                        .setContentText("这里展示的是通知内容~")
+
+                        .setWhen(System.currentTimeMillis())
+
+                        .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+
+                        //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notifications_black_24dp))
+
+                        .build();
+
+                manager.notify(1, notification);
+            }
+
+        });
         return view;
     }
 
@@ -167,9 +199,10 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 //the rest for test
-                String test = "Fruit/Food/Plant/Apple/Orange/Monitor/";
-                //getFood(test);
-                Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
+                String test = "Fruit/Food/Plant/Apple/Juice/Broccoli/";
+                Toast.makeText(getActivity().getApplicationContext(), test, Toast.LENGTH_LONG).show();
+                getFood(test);
+                //Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -198,6 +231,7 @@ public class NotificationFragment extends Fragment {
             bl.add(false);
         }
         setBl(bl);
+        setMData(mData);
         showFoodDetectedDialog(mData);
     }
 
@@ -232,7 +266,9 @@ public class NotificationFragment extends Fragment {
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case Dialog.BUTTON_POSITIVE:
-                    //确定按钮的事件
+
+                    Toast.makeText(getActivity().getApplicationContext(), "click positive button", Toast.LENGTH_LONG).show();
+
                     break;
                 case Dialog.BUTTON_NEGATIVE:
                     //取消按钮的事件
@@ -362,4 +398,7 @@ public class NotificationFragment extends Fragment {
         selectHistory = postion;
     }
 
+    public void setMData( ArrayList<Map<String, Object>> mData) {
+        this.mData = mData;
+    }
 }

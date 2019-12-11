@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-//Tablayout里viewpager的适配器
-
 public class TabFragmentAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList;
     private final List<String> mTabTitle;
