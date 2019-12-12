@@ -14,6 +14,7 @@ import com.iot.myfridge.R;
 import com.iot.myfridge.activity.MainActivity;
 import com.iot.myfridge.adapter.RecycleViewAdapter;
 import com.iot.myfridge.data.CurrentGood;
+import com.iot.myfridge.data.HistoryGood;
 import com.iot.myfridge.database.FridgeDatabase;
 import com.iot.myfridge.utils.DataUtil;
 import com.iot.myfridge.utils.GlideImageLoader;
@@ -37,7 +38,8 @@ public class TabFragment extends Fragment {
     int mPosition;
     private RecycleViewAdapter mAdapter;
     private Banner mBanner;
-    ArrayList<CurrentGood> testGoods;
+    ArrayList<CurrentGood> testCGoods;
+    ArrayList<HistoryGood> testHGoods;
     private FridgeDatabase fridgeDatabase;
 
     @Nullable
@@ -59,7 +61,7 @@ public class TabFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecycleViewAdapter(R.layout.food_item_view, mdata,getActivity());
+        mAdapter = new RecycleViewAdapter(R.layout.food_item_view, mdata,getActivity(), mPosition,fridgeDatabase);
 
         View top = getLayoutInflater().inflate(R.layout.layout_banner, (ViewGroup) mRecyclerView.getParent(), false);
         mBanner = top.findViewById(R.id.banner);
@@ -70,15 +72,32 @@ public class TabFragment extends Fragment {
 
     private void initData() {
 
-        testGoods = new ArrayList<>();
-        testGoods = fridgeDatabase.getCurrentGoods();
-        for (CurrentGood c : testGoods){
-            mdata.add(c.getName());
+        testCGoods = new ArrayList<>();
+        testHGoods = new ArrayList<>();
+        if(mPosition == 0){
+            mdata = new ArrayList<>();
+            mdata.add("Apple");
+        }
+        else if(mPosition == 1){
+            mdata = new ArrayList<>();
+            testCGoods = fridgeDatabase.getCurrentGoods();
+            for (CurrentGood c : testCGoods){
+                mdata.add(c.getCid());
+            }
+        }
+        else if(mPosition == 2){
+            mdata = new ArrayList<>();
+            testHGoods = fridgeDatabase.getHistoryGoods();
+            for (HistoryGood h : testHGoods){
+                mdata.add(h.getHid());
+            }
+        }
+        else if(mPosition == 3){
+
         }
 
-        //for (int i = 0; i < 19; i++) {
-         //   mdata.add("Pear");
-        //}
+
+
         mAdapter.setNewData(mdata);//模拟网络请求成功后要调用这个方法刷新数据
         if (mPosition == 0) {
             imageUrl.clear();
@@ -142,5 +161,8 @@ public class TabFragment extends Fragment {
         mBanner.stopAutoPlay();
     }
 
+    public int getmPosition(){
+        return mPosition;
+    }
 
 }

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class CurrentGood {
+public class BalanceGood {
 
-    private String Cid;
+    private String Bid;
     private String name;
     private String storeDate;   // int year, int month, int date
     private Date expDate;
@@ -17,16 +17,15 @@ public class CurrentGood {
     private String label;    // same as original basicGood.label
     private int calories; // total calories
     private int quantity;
-    private int icon;        // same as original basicGood.id, 改成String = name
 
     // constructor
-    public CurrentGood(){
+    public BalanceGood(){
         //this.leftDay = ;
     };
 
-    public CurrentGood(String name, String storeDate, int quantity){
+    public BalanceGood(String name, String storeDate, int quantity){
 
-        this.Cid = UUID.randomUUID().toString();
+        this.Bid = UUID.randomUUID().toString();
         this.name = name;
         this.storeDate = "2019-12-"+storeDate;
         //this.expDate = expDate;
@@ -35,9 +34,16 @@ public class CurrentGood {
         this.calories = new Constants().NameCal().get(name);
         this.quantity = quantity;
     }
-    public CurrentGood(String Cid){
-        this.Cid = Cid;
-        //todo icon
+    public BalanceGood(String name, int quantity){
+
+        this.Bid = UUID.randomUUID().toString();
+        this.name = name;
+        this.storeDate = "2019-12-12";
+        //this.expDate = expDate;
+        //this.leftDay = new DataUtil().getDateDiff(storeDate,expDate);
+        this.label = new Constants().NameLabel().get(name);
+        this.calories = new Constants().NameCal().get(name);
+        this.quantity = quantity;
     }
 
     // setter
@@ -73,7 +79,7 @@ public class CurrentGood {
     // getter
 
     public String getCid() {
-        return Cid;
+        return Bid;
     }
 
     public String getName() {
@@ -102,10 +108,6 @@ public class CurrentGood {
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public int getIcon() {
-        return icon;
     }
 
 }

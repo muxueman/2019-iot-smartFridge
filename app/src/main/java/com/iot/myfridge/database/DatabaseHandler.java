@@ -152,7 +152,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 CurrentGood good = new CurrentGood(cursor.getString(0));
                 good.setName(cursor.getString(1));
-                good.setStoreDate(dataUtil.parseDates(cursor.getString(2)));
+                //good.setStoreDate(dataUtil.parseDates(cursor.getString(2)));
+                good.setStoreDate(cursor.getString(2));
                 good.setExpDate(dataUtil.parseDates((cursor.getString(3))));
                 good.setQuantity(Integer.parseInt(cursor.getString(4)));
                 good.setCalories(Integer.parseInt(cursor.getString(5)));
@@ -200,7 +201,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 HistoryGood good = new HistoryGood(cursor.getString(0));
                 good.setName(cursor.getString(1));
-                good.setEatenDate(dataUtil.parseDates((cursor.getString(2))));
+                //good.setEatenDate(dataUtil.parseDates((cursor.getString(2))));
+                good.setEatenDate(cursor.getString(2));
                 good.setQuantity(Integer.parseInt(cursor.getString(3)));
                 good.setCalories(Integer.parseInt(cursor.getString(4)));
                 good.setLabel(cursor.getString(6));

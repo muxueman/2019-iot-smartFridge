@@ -1,6 +1,7 @@
 package com.iot.myfridge.database;
 
 import com.iot.myfridge.data.CurrentGood;
+import com.iot.myfridge.data.Good;
 import com.iot.myfridge.data.HistoryGood;
 import com.iot.myfridge.utils.DataUtil;
 
@@ -10,9 +11,12 @@ public class FridgeDatabase {
 
     private ArrayList<CurrentGood> currentGoods;
     private ArrayList<HistoryGood> historyGoods;
+    private ArrayList<CurrentGood> balanceGoods;
     public FridgeDatabase(){
+
         currentGoods = initTestCurrentGoods();
         historyGoods = initTestHistoryFoods();
+
     }
 
 
@@ -61,7 +65,7 @@ public class FridgeDatabase {
         testHistoryLists.add(new HistoryGood("Orange", "05", 1));
         testHistoryLists.add(new HistoryGood("Bread", "05", 1));
         testHistoryLists.add(new HistoryGood("Fish", "05", 1));
-        testHistoryLists.add(new HistoryGood("Orange Juice", "05", 1));
+        testHistoryLists.add(new HistoryGood("Juice", "05", 1));
         testHistoryLists.add(new HistoryGood("Broccoli", "05", 1));
         testHistoryLists.add(new HistoryGood("Rice", "05", 1));
         testHistoryLists.add(new HistoryGood("Apple", "05", 1));
@@ -131,5 +135,22 @@ public class FridgeDatabase {
 
     public ArrayList<HistoryGood> getHistoryGoods() {
         return historyGoods;
+    }
+
+    public CurrentGood searchCurrentById(String id){
+        for(CurrentGood c: currentGoods){
+            if (c.getCid().equals(id)) {
+                return c;
+            }
+        }
+        return getCurrentGoods().get(1);
+    }
+    public HistoryGood searchHistoryById(String id){
+        for(HistoryGood c: historyGoods){
+            if (c.getHid().equals(id)) {
+                return c;
+            }
+        }
+        return getHistoryGoods().get(1);
     }
 }

@@ -72,10 +72,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mFragmentArrays.clear();
             mTabs.clear();
         }
-        mTabs.add("ALL");
-        mTabs.add("Veg&Fruit");
-        mTabs.add("Meat");
-        mTabs.add("Other");
+        mTabs.add("Current");
+        mTabs.add("Past-Buy");
+        mTabs.add("Past-Eat");
+        mTabs.add("Waste");
 
         //动态添加Fragment
         for (int i = 0; i < mTabs.size(); i++) {

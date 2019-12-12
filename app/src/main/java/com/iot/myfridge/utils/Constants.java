@@ -125,6 +125,7 @@ public class Constants {
         nameCals.put("Sushi",314);
         nameCals.put("Potato",162);
         nameCals.put("Ham",495);
+        nameCals.put("Rice",180);
         return nameCals;
     }
 
@@ -152,6 +153,7 @@ public class Constants {
         nameWeights.put("Sushi",200);
         nameWeights.put("Potato",200);
         nameWeights.put("Ham",150);
+        nameWeights.put("Rice",150);
         return nameWeights;
     }
 
@@ -179,6 +181,7 @@ public class Constants {
         nameCarbs.put("Sushi",54.8);
         nameCarbs.put("Potato",35.6);
         nameCarbs.put("Ham",7.35);
+        nameCarbs.put("Rice", 30.0);
         return nameCarbs;
     }
 
@@ -191,7 +194,7 @@ public class Constants {
         nameFat.put("Bread",2.55);
         nameFat.put("Fish",11.1);
         nameFat.put("Juice",0.0);
-        nameFat.put("broccoli",1.35);
+        nameFat.put("Broccoli",1.35);
         nameFat.put("Carrot",6.0);
         nameFat.put("Spinach",0.45);
         nameFat.put("Chicken Wing",17.7);
@@ -206,6 +209,7 @@ public class Constants {
         nameFat.put("Sushi",6.4);
         nameFat.put("Potato",0.4);
         nameFat.put("Ham",41.1);
+        nameFat.put("Rice", 0.3);
         return nameFat;
     }
     public Map<String, Double> NamePros(){
@@ -217,7 +221,7 @@ public class Constants {
         namePros.put("Bread",4.15);
         namePros.put("Fish",50.4);
         namePros.put("Juice",2.0);
-        namePros.put("broccoli",6.6);
+        namePros.put("Broccoli",6.6);
         namePros.put("Carrot",1.35);
         namePros.put("Spinach",3.9);
         namePros.put("Chicken Wing",26.1);
@@ -232,6 +236,7 @@ public class Constants {
         namePros.put("Sushi",8.8);
         namePros.put("Potato",5.2);
         namePros.put("Ham",24.0);
+        namePros.put("Rice", 0.2);
         return namePros;
     }
 
