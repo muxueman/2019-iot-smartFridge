@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +40,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.tab_viewpager)
     ViewPager tabViewpager;
     Unbinder unbinder;
-
 
     private List<Fragment> mFragmentArrays = new ArrayList<>();
     private List<String> mTabs = new ArrayList<>();
@@ -103,5 +104,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public List<Fragment> getmFragmentArrays(){
+        return mFragmentArrays;
     }
 }

@@ -72,7 +72,7 @@ public class MsgUtil {
 
                 testNotis.get(7).getContent());
 
-        //msgList.add(msg);
+        msgList.add(msg);
 
         msg = new Msg(2,R.drawable.beef,
                 testNotis.get(6).getNotiDate(),

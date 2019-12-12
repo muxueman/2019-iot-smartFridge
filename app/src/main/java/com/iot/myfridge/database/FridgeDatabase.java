@@ -1,5 +1,6 @@
 package com.iot.myfridge.database;
 
+import com.iot.myfridge.data.BalanceGood;
 import com.iot.myfridge.data.CurrentGood;
 import com.iot.myfridge.data.Good;
 import com.iot.myfridge.data.HistoryGood;
@@ -11,11 +12,12 @@ public class FridgeDatabase {
 
     private ArrayList<CurrentGood> currentGoods;
     private ArrayList<HistoryGood> historyGoods;
-    private ArrayList<CurrentGood> balanceGoods;
+    private ArrayList<BalanceGood> balanceGoods;
     public FridgeDatabase(){
 
         currentGoods = initTestCurrentGoods();
         historyGoods = initTestHistoryFoods();
+        balanceGoods = initTestBalanceGoods();
 
     }
 
@@ -129,6 +131,53 @@ public class FridgeDatabase {
         return testHistoryLists;
     }
 
+
+    public ArrayList<BalanceGood> initTestBalanceGoods() {
+        ArrayList<BalanceGood> testBalanceLists = new ArrayList<>();
+
+        for (CurrentGood c : currentGoods){
+            if(!checkExist(c,testBalanceLists)){
+                testBalanceLists.add(new BalanceGood(c.getName(),c.getStoreDate(),c.getQuantity()));
+            }
+            else{
+                for (BalanceGood b: testBalanceLists){
+                    if(b.getName().equals(c.getName())){
+                        b.setQuantity(b.getQuantity()+c.getQuantity());
+                        b.setStoreDate(c.getStoreDate());
+                    }
+                }
+            }
+
+        }
+        for (HistoryGood h : historyGoods) {
+            if (check(h, testBalanceLists)) {
+                for (BalanceGood b: testBalanceLists){
+                    if(b.getName().equals(h.getName())){
+                        b.setQuantity(b.getQuantity()- h.getQuantity());
+                    }
+                }
+            }
+        }
+        return testBalanceLists;
+    }
+
+    private boolean check(HistoryGood h, ArrayList<BalanceGood> list){
+        for(BalanceGood b: list){
+            if (b.getName().equals(h.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkExist(CurrentGood c, ArrayList<BalanceGood> list){
+        for(BalanceGood b: list){
+            if (b.getName().equals(c.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
     public ArrayList<CurrentGood> getCurrentGoods() {
         return currentGoods;
     }
@@ -136,6 +185,8 @@ public class FridgeDatabase {
     public ArrayList<HistoryGood> getHistoryGoods() {
         return historyGoods;
     }
+
+    public ArrayList<BalanceGood> getBalanceGoods(){ return  balanceGoods; }
 
     public CurrentGood searchCurrentById(String id){
         for(CurrentGood c: currentGoods){
@@ -152,5 +203,22 @@ public class FridgeDatabase {
             }
         }
         return getHistoryGoods().get(1);
+    }
+    public BalanceGood searchBalanceById(String id){
+        for(BalanceGood c: balanceGoods){
+            if (c.getBid().equals(id)) {
+                return c;
+            }
+        }
+        return getBalanceGoods().get(1);
+    }
+    public void addCurrentGood(ArrayList<CurrentGood> currentGood){
+        this.currentGoods.addAll(currentGood);
+    }
+    public void addHistoryGood(ArrayList<HistoryGood> historyGood){
+        this.historyGoods.addAll(historyGood);
+    }
+    public void updateBalance(){
+        initTestBalanceGoods();
     }
 }

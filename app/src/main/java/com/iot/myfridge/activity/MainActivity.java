@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,15 +17,21 @@ import android.widget.Toast;
 
 import com.iot.myfridge.R;
 import com.iot.myfridge.adapter.ViewPagerAdapter;
+import com.iot.myfridge.data.CurrentGood;
 import com.iot.myfridge.database.FridgeDatabase;
 import com.iot.myfridge.fragment.NotificationFragment;
 import com.iot.myfridge.fragment.HomeFragment;
+import com.iot.myfridge.fragment.TabFragment;
 import com.iot.myfridge.fragment.UserFragment;
 import com.iot.myfridge.utils.ActivityUtils;
 import com.iot.myfridge.utils.BottomNavigationViewHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import android.support.v4.app.Fragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,13 +42,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ViewPager viewpager;
     private MenuItem menuItem;
     private boolean mIsExit;
+    private FridgeDatabase fridgeDatabase;
+    private ArrayList<Fragment> fragments;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fridgeDatabase = new FridgeDatabase();
         Log.d("MainActivity","______onCreate execute_______");
         ButterKnife.bind(this);
+
         ActivityUtils.StatusBarLightMode(this);
         ActivityUtils.setStatusBarColor(this, R.color.cornflowerblue);//设置状态栏颜色
         initView();
@@ -52,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new NotificationFragment());
         adapter.addFragment(new UserFragment());
@@ -132,5 +145,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
 
         }
+    }
+    public FridgeDatabase getFridgeDatabase(){
+        return this.fridgeDatabase;
+    }
+
+    public void reloadFragView(ArrayList<CurrentGood> currentGoods){
+        fridgeDatabase.addCurrentGood(currentGoods);
+        fridgeDatabase.updateBalance();
+        Toast.makeText(getApplicationContext(), "updatedatabase", Toast.LENGTH_LONG).show();
+        HomeFragment f = (HomeFragment)adapter.getItem(0);
+        TabFragment tf1 = (TabFragment) f.getmFragmentArrays().get(1);
+        tf1.updateView();
+        TabFragment tf0 = (TabFragment) f.getmFragmentArrays().get(0);
+        tf0.updateView();
     }
 }

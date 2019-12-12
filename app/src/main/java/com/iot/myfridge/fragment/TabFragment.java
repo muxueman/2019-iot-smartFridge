@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.iot.myfridge.R;
 import com.iot.myfridge.activity.MainActivity;
 import com.iot.myfridge.adapter.RecycleViewAdapter;
+import com.iot.myfridge.data.BalanceGood;
 import com.iot.myfridge.data.CurrentGood;
 import com.iot.myfridge.data.HistoryGood;
 import com.iot.myfridge.database.FridgeDatabase;
@@ -40,12 +41,13 @@ public class TabFragment extends Fragment {
     private Banner mBanner;
     ArrayList<CurrentGood> testCGoods;
     ArrayList<HistoryGood> testHGoods;
+    ArrayList<BalanceGood> testBGoods;
     private FridgeDatabase fridgeDatabase;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fridgeDatabase = new FridgeDatabase();
+        fridgeDatabase = ((MainActivity)getActivity()).getFridgeDatabase();
         View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         mPosition = getArguments().getInt("position");
@@ -76,7 +78,10 @@ public class TabFragment extends Fragment {
         testHGoods = new ArrayList<>();
         if(mPosition == 0){
             mdata = new ArrayList<>();
-            mdata.add("Apple");
+            testBGoods = fridgeDatabase.getBalanceGoods();
+            for (BalanceGood b : testBGoods){
+                mdata.add(b.getBid());
+            }
         }
         else if(mPosition == 1){
             mdata = new ArrayList<>();
@@ -93,7 +98,7 @@ public class TabFragment extends Fragment {
             }
         }
         else if(mPosition == 3){
-
+            mdata.add("Apple");
         }
 
 
@@ -164,5 +169,10 @@ public class TabFragment extends Fragment {
     public int getmPosition(){
         return mPosition;
     }
+
+   public void updateView(){
+        initData();
+        //initView();
+   }
 
 }

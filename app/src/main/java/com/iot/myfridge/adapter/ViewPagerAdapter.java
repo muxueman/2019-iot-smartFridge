@@ -1,5 +1,6 @@
 package com.iot.myfridge.adapter;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,6 +28,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public void addFragment(Fragment fragment) {
         mFragmentList.add(fragment);
+    }
+
+    public void updateFragment(int position){
+        Fragment f = getItem(position);
     }
 
 }

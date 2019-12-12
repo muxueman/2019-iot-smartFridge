@@ -78,7 +78,7 @@ public class BalanceGood {
 
     // getter
 
-    public String getCid() {
+    public String getBid() {
         return Bid;
     }
 

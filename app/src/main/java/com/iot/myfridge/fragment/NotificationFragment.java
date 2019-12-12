@@ -31,8 +31,11 @@ import android.widget.Toast;
 
 import com.iot.myfridge.R;
 import com.iot.myfridge.activity.LineChartActivity1;
+import com.iot.myfridge.activity.MainActivity;
 import com.iot.myfridge.activity.PiePolylineChartActivity;
 import com.iot.myfridge.activity.RadarChartActivity;
+import com.iot.myfridge.data.CurrentGood;
+import com.iot.myfridge.database.FridgeDatabase;
 import com.iot.myfridge.utils.Constants;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -68,12 +71,14 @@ public class NotificationFragment extends Fragment {
     private ArrayList<Boolean> bl = new ArrayList<>();
     private SimpleAdapter simpleAdapter;
     private ArrayList<Map<String, Object>> mData;
+    private ArrayList<String> foodDetected;
 
     private Spinner spinner;
     private int selectHistory;
     private ArrayAdapter<String> selectAdapter;
     private static final String[] years = { "Today", "Last Week", "Last Month", "History" };
     private ArrayList<String> array = new ArrayList<String>();
+    private FridgeDatabase fridgeDatabase;
 
 
     @Override
@@ -83,6 +88,7 @@ public class NotificationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fridge, container, false);
         ButterKnife.bind(this,view);
         setSelectHistory(0);
+        fridgeDatabase = ((MainActivity)getActivity()).getFridgeDatabase();
         fridgeBtn = view.findViewById(R.id.fridge);
         fridgeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +208,7 @@ public class NotificationFragment extends Fragment {
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 //the rest for test
                 String test = "Fruit/Food/Plant/Apple/Juice/Broccoli/";
-                Toast.makeText(getActivity().getApplicationContext(), test, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), " ", Toast.LENGTH_LONG).show();
                 getFood(test);
                 //Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
             }
@@ -211,7 +217,7 @@ public class NotificationFragment extends Fragment {
 
     public void getFood(String response){
         String[] foodRawDetected = response.split("/");
-        ArrayList<String> foodDetected = new ArrayList<>();
+        foodDetected = new ArrayList<>();
         ArrayList<Map<String, Object>> mData = new ArrayList<Map<String, Object>>();
         ArrayList<Boolean> bl = new ArrayList<>();
         for (String f : foodRawDetected){
@@ -269,7 +275,19 @@ public class NotificationFragment extends Fragment {
             switch (which) {
                 case Dialog.BUTTON_POSITIVE:
 
-                    Toast.makeText(getActivity().getApplicationContext(), "click positive button", Toast.LENGTH_LONG).show();
+                    ArrayList<String> r = new ArrayList<>();
+                    for (int i = 0 ; i< foodDetected.size();i++){
+                        if (bl.get(i)){
+                            r.add(foodDetected.get(i));
+                        }
+                    }
+                    ArrayList<CurrentGood> currentGoods = new ArrayList<>();
+                    for (String j : r){
+                        CurrentGood c = new CurrentGood(j,"12",1);
+                        currentGoods.add(c);
+                    }
+                    Toast.makeText(getActivity().getApplicationContext(), "select"+ r.toString(), Toast.LENGTH_LONG).show();
+                    ((MainActivity)getActivity()).reloadFragView(currentGoods);
 
                     break;
                 case Dialog.BUTTON_NEGATIVE:
