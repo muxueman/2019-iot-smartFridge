@@ -208,9 +208,9 @@ public class NotificationFragment extends Fragment {
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 //the rest for test
                 String test = "Fruit/Food/Plant/Apple/Juice/Broccoli/";
-                Toast.makeText(getActivity().getApplicationContext(), " ", Toast.LENGTH_LONG).show();
-                getFood(test);
-                //Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(), " ", Toast.LENGTH_LONG).show();
+                 getFood(test);
+                Toast.makeText(getActivity().getApplicationContext(), "Cannot not reach : " + urlFridge, Toast.LENGTH_LONG).show();
             }
         });
     }

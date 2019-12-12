@@ -22,7 +22,7 @@ public class Constants {
     }
     public static class FOODLISTS{
         //need to update
-        public static final String[] FOOD_LISTS = {"Apple", "Orange", "Pear", "Banana", "Pineapple","Broccoli","Orange Juice", "Juice"};
+        public static final String[] FOOD_LISTS = {"Apple", "Orange", "Pear", "Banana", "Pineapple","Broccoli","Orange Juice", "Juice", "Beef", "Pizza", "Lemon","Carrot", "Corn"};
     }
     /***
     //test
@@ -99,6 +99,8 @@ public class Constants {
         nameLabels.put("Sushi","Coarse Grain");
         nameLabels.put("Potato","Vegetables");
         nameLabels.put("Ham","Meat");
+        nameLabels.put("Lemon","Fruit");
+        nameLabels.put("Pizza", "Bread");
         return nameLabels;
     }
 
@@ -126,6 +128,8 @@ public class Constants {
         nameCals.put("Potato",162);
         nameCals.put("Ham",495);
         nameCals.put("Rice",180);
+        nameCals.put("Lemon",100);
+        nameCals.put("Pizza",230);
         return nameCals;
     }
 
@@ -154,6 +158,8 @@ public class Constants {
         nameWeights.put("Potato",200);
         nameWeights.put("Ham",150);
         nameWeights.put("Rice",150);
+        nameWeights.put("Lemon",90);
+        nameWeights.put("Pizza",180);
         return nameWeights;
     }
 
@@ -182,6 +188,8 @@ public class Constants {
         nameCarbs.put("Potato",35.6);
         nameCarbs.put("Ham",7.35);
         nameCarbs.put("Rice", 30.0);
+        nameCarbs.put("Lemon",23.0);
+        nameCarbs.put("Pizza",39.0);
         return nameCarbs;
     }
 
@@ -210,6 +218,8 @@ public class Constants {
         nameFat.put("Potato",0.4);
         nameFat.put("Ham",41.1);
         nameFat.put("Rice", 0.3);
+        nameFat.put("Lemon",0.2);
+        nameFat.put("Pizza",23.0);
         return nameFat;
     }
     public Map<String, Double> NamePros(){
@@ -237,6 +247,8 @@ public class Constants {
         namePros.put("Potato",5.2);
         namePros.put("Ham",24.0);
         namePros.put("Rice", 0.2);
+        namePros.put("Lemon", 0.1);
+        namePros.put("Pizza",2.0);
         return namePros;
     }
 

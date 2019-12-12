@@ -68,7 +68,7 @@ public class RadarChartActivity extends DemoBase {
         xAxis.setXOffset(0f);
         xAxis.setValueFormatter(new ValueFormatter() {
 
-            private final String[] mActivities = new String[]{"Burger", "Steak", "Salad", "Pasta", "Pizza"};
+            private final String[] mActivities = new String[]{"Bread", "Vegetable&Fruit", "Meat", "Dairy", "Sweets"};
 
             @Override
             public String getFormattedValue(float value) {
