@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.iot.myfridge.R;
 import com.iot.myfridge.adapter.ViewPagerAdapter;
 import com.iot.myfridge.data.CurrentGood;
+import com.iot.myfridge.data.HistoryGood;
 import com.iot.myfridge.database.FridgeDatabase;
 import com.iot.myfridge.fragment.NotificationFragment;
 import com.iot.myfridge.fragment.HomeFragment;
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void reloadFragView(ArrayList<CurrentGood> currentGoods){
         fridgeDatabase.addCurrentGood(currentGoods);
         fridgeDatabase.updateBalance();
+        ArrayList<HistoryGood> testGoods = new ArrayList<>();
         Toast.makeText(getApplicationContext(), "updatedatabase", Toast.LENGTH_LONG).show();
         HomeFragment f = (HomeFragment)adapter.getItem(0);
         TabFragment tf1 = (TabFragment) f.getmFragmentArrays().get(1);
