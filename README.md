@@ -2,7 +2,7 @@
 
 EECS4764 IOT project
 Group 2: Yanjun Liu, Xueman Mu, Mingjun Zhu
-![image}(https://github.com/muxueman/2019-iot-smartFridge/blob/master/posterfinalfinal.png)
+![image](https://github.com/muxueman/2019-iot-smartFridge/blob/master/posterfinalfinal.png)
 The Project mainly has six features:
 
 Food list: Recognize food in fridge with camera.\
